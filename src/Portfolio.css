@@ -1361,3 +1361,188 @@ body {
     padding-bottom: 35px;
   }
 }
+/* OM MIG – Ljust redaktionellt uppslag */
+
+.home-about {
+  background: linear-gradient(
+    180deg,
+    #e7e1da 0%,
+    #f0eae3 55%,
+    #f6f1eb 100%
+  );
+
+  color: #292b2d;
+  min-height: 285px;
+}
+
+.home-about-copy > p {
+  color: #45494b;
+  line-height: 1.7;
+}
+
+.home-about .subtle-link {
+  color: #303538;
+}
+
+.home-about-photo {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 16px 34px rgba(25, 30, 35, 0.22);
+}
+
+@media (min-width: 801px) {
+  .home-about-copy {
+    padding-top: 45px;
+    padding-bottom: 48px;
+  }
+}
+
+/* ======================================
+   STARTSIDA – UTVALDA PROJEKT
+   ====================================== */
+
+.home-personal .home-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 65px clamp(28px, 5vw, 70px) 72px;
+  background: #f6f1eb;
+}
+
+/* Centrerad introduktion */
+
+.home-personal .featured-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 42px;
+}
+
+.home-personal .featured-intro .eyebrow {
+  margin: 0 0 22px;
+}
+
+.home-personal .featured-intro h2 {
+  font-size: clamp(38px, 4vw, 53px);
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Två jämnstora projektkort */
+
+.home-personal .featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.home-personal .project-tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  padding: 14px;
+  background: #343d45;
+  border: 1px solid #4c565e;
+  color: #f6f1eb;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(30, 35, 40, .13);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.home-personal .project-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(30, 35, 40, .2);
+}
+
+/* Projektbilderna */
+
+.home-personal .tile-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #f5f0eb;
+  border: 1px solid rgba(255,255,255,.18);
+  overflow: hidden;
+}
+
+.home-personal .tile-photo img {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Text under bilderna */
+
+.home-personal .tile-caption {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  gap: 16px;
+  min-height: 0;
+  padding: 22px 8px 8px;
+  background: transparent;
+  color: #f6f1eb;
+}
+
+.home-personal .tile-caption > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-personal .tile-caption h3 {
+  color: #f6f1eb;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: .13em;
+  margin: 0 0 11px;
+}
+
+.home-personal .tile-caption p {
+  color: #d3d8db;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-personal .tile-arrow {
+  align-self: flex-end;
+  color: #f0e6da;
+  font-size: 25px;
+  flex-shrink: 0;
+}
+
+/* Länk under korten */
+
+.home-personal .featured-more {
+  align-self: center;
+  margin-top: 37px;
+  color: #30363a;
+}
+
+/* Mobilanpassning */
+
+@media (max-width: 750px) {
+  .home-personal .home-projects {
+    padding: 52px 7% 65px;
+  }
+
+  .home-personal .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .home-personal .featured-intro {
+    margin-bottom: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-personal .project-tile {
+    transition: none;
+  }
+}

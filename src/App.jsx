@@ -552,32 +552,31 @@ function Home() {
         </div>
       </section>
 
-      <section className="home-projects" aria-labelledby="featured-heading">
-        <div className="featured-intro">
-          <Eyebrow>Utvalda projekt</Eyebrow>
+      
+<section className="home-projects" aria-labelledby="featured-heading">
+  <div className="featured-intro">
+    <Eyebrow>Utvalda projekt</Eyebrow>
 
-          <h2 id="featured-heading" className="serif-section-title">
-            Små idéer som <em>blivit kod.</em>
-          </h2>
+    <h2 id="featured-heading" className="serif-section-title">
+      Det här har jag <em>byggt.</em>
+    </h2>
+  </div>
 
-          <p>
-            Här finns några saker jag byggt medan jag lär mig programmera. En
-            del började som övningar. Andra började med att jag ville testa en
-            idé.
-          </p>
+  <div className="featured-grid">
+    {featured.map((project) => (
+      <ProjectTile key={project.id} project={project} />
+    ))}
+  </div>
 
-          <Link className="subtle-link subtle-link-dark" to="/projekt">
-            Se alla projekt
-            <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
+  <Link
+    className="subtle-link subtle-link-dark featured-more"
+    to="/projekt"
+  >
+    Se alla projekt
+    <span aria-hidden="true">↗</span>
+  </Link>
+</section>
 
-        <div className="featured-grid">
-          {featured.map((project) => (
-            <ProjectTile key={project.id} project={project} />
-          ))}
-        </div>
-      </section>
 
       <section className="closing-statement">
         <Photo
