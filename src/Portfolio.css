@@ -459,3 +459,547 @@ body::after {
   text-decoration-color: #292929;
   text-decoration-thickness: 2px;
 }
+/* Dölj den extra texten i hero-sektionen */
+.home-personal .home-hero-caption {
+  display: none;
+}
+/* Visa hela skärmbilderna i projektkorten */
+.project-tile .tile-photo {
+  background: #f6f1eb;
+}
+
+.project-tile .tile-photo img {
+  object-fit: contain;
+  object-position: center;
+}
+/* =========================================
+   VÄDERKOLLEN – REDAKTIONELL DESIGN
+   ========================================= */
+
+/* Göm den tomma projektbilden tills en riktig finns */
+.detail-page:has(.weather-dashboard) .detail-photo {
+  display: none;
+}
+
+/* Mörk bakgrund som kontrasterar mot den ljusa sidan */
+.detail-page:has(.weather-dashboard) .demo-section {
+  background: #374047;
+  color: #f5f0ea;
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.detail-page:has(.weather-dashboard) .demo-section > .eyebrow {
+  color: #e6e1dc;
+}
+
+.detail-page:has(.weather-dashboard) .demo-section > .eyebrow .eyebrow-rule {
+  background: #a8b0b4;
+}
+
+/* Växla mellan jämförelse och enskild stad */
+.detail-page:has(.weather-dashboard) .demo-choice {
+  gap: 0;
+  margin-bottom: 38px;
+  border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.detail-page:has(.weather-dashboard) .demo-choice button {
+  padding: 14px 19px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #c7cdd0;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.detail-page:has(.weather-dashboard) .demo-choice button.chosen {
+  color: #fff;
+  background: transparent;
+  border-bottom-color: #e9e0d5;
+}
+
+.detail-page:has(.weather-dashboard) .demo-choice button:hover {
+  color: #fff;
+}
+
+/* Övre informationsrad */
+.weather-dashboard .weather-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  color: #c7cdd0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+
+.weather-dashboard .weather-indicator {
+  color: #e5ddd1;
+}
+
+/* Rubrik och uppdateringsknapp */
+.weather-dashboard .weather-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.demo-section .weather-dashboard .weather-heading h2 {
+  font-family: var(--display);
+  font-size: clamp(34px, 4vw, 49px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fff8f0;
+  margin: 0 0 12px;
+}
+
+.demo-section .weather-dashboard .weather-heading p {
+  color: #c5cbce;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.demo-section .weather-dashboard .weather-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: 1px solid #89959a;
+  background: transparent;
+  color: #fff;
+  padding: 11px 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.weather-refresh span {
+  font-size: 20px;
+  line-height: .7;
+}
+
+.weather-refresh:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+/* Stadsväljare */
+.demo-section .weather-dashboard .vader-val {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 27px;
+}
+
+.demo-section .weather-dashboard .vader-val button {
+  border: 1px solid #8a979d;
+  border-radius: 0;
+  background: transparent;
+  color: #e5e9e9;
+  padding: 10px 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.demo-section .weather-dashboard .vader-val button[aria-pressed="true"] {
+  background: #e9e1d8;
+  color: #2b3135;
+  border-color: #e9e1d8;
+}
+
+/* Kortlayout */
+.weather-dashboard .vader-lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.demo-section .weather-dashboard .vader-kort,
+.demo-section .weather-dashboard .city-weather-resultat {
+  background: #f2ece5;
+  color: #292d30;
+  border: 1px solid #f2ece5;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 24px;
+  min-width: 0;
+}
+
+.weather-dashboard .weather-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d1c9c1;
+}
+
+.weather-dashboard .weather-card-index {
+  color: #8c9195;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.demo-section .weather-dashboard .weather-card-head h3 {
+  margin: 0;
+  color: #303538;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Temperaturen får huvudrollen */
+.weather-dashboard .weather-temperature {
+  font-family: var(--display);
+  font-size: clamp(47px, 5.5vw, 76px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  white-space: nowrap;
+  margin: 22px 0 24px;
+  color: #30363a;
+}
+
+.weather-dashboard .weather-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+  padding-top: 13px;
+  border-top: 1px solid #d1c9c1;
+  color: #747a7e;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.weather-dashboard .weather-card-foot strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: #30363a;
+  font-weight: 700;
+}
+
+/* Enskild stad */
+.demo-section .weather-dashboard.city-weather {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.weather-dashboard .weather-select-wrap {
+  margin-bottom: 25px;
+}
+
+.weather-dashboard .weather-select-wrap label {
+  display: block;
+  margin-bottom: 10px;
+  color: #d0d7da;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.demo-section .weather-dashboard .weather-select-wrap select {
+  width: 100%;
+  max-width: 360px;
+  padding: 14px;
+  background: #f6f0e9;
+  border: 1px solid #ddd4c9;
+  border-radius: 0;
+  color: #252a2d;
+  font: inherit;
+}
+
+.demo-section .weather-dashboard .city-weather-resultat {
+  margin-top: 20px;
+}
+
+.weather-dashboard .weather-state {
+  padding: 25px 0;
+  color: #e7e1db !important;
+}
+
+/* Anpassning för mindre skärmar */
+@media (max-width: 700px) {
+  .weather-dashboard .weather-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .weather-dashboard .vader-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-dashboard .weather-temperature {
+    font-size: clamp(52px, 12vw, 72px);
+  }
+
+  .weather-dashboard .weather-card-foot {
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================================
+   VÄDERKOLLEN – ILLUSTRERADE VÄDERKORT
+   ========================================= */
+
+.weather-dashboard .vader-lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Kortens grunddesign */
+
+.demo-section .weather-dashboard .vader-kort {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  padding: 25px 24px 22px;
+  background: linear-gradient(
+    155deg,
+    #f6f2ed 0%,
+    #ece7e1 100%
+  );
+  color: #31383d;
+  border: 1px solid #eee9e3;
+  box-shadow: none;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.demo-section .weather-dashboard .vader-kort:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, .13);
+}
+
+/* Diskreta färgskillnader efter väder */
+
+.demo-section .weather-dashboard .weather-card--klart {
+  background: linear-gradient(
+    145deg,
+    #f7f2ea,
+    #ebe5dd
+  );
+}
+
+.demo-section .weather-dashboard .weather-card--halvklart {
+  background: linear-gradient(
+    145deg,
+    #f4f1ec,
+    #e5e9e9
+  );
+}
+
+.demo-section .weather-dashboard .weather-card--moln,
+.demo-section .weather-dashboard .weather-card--dimma {
+  background: linear-gradient(
+    145deg,
+    #edf0ef,
+    #dce2e4
+  );
+}
+
+.demo-section .weather-dashboard .weather-card--regn,
+.demo-section .weather-dashboard .weather-card--aska {
+  background: linear-gradient(
+    145deg,
+    #e9edef,
+    #d6dfe4
+  );
+}
+
+.demo-section .weather-dashboard .weather-card--sno {
+  background: linear-gradient(
+    145deg,
+    #f5f6f5,
+    #e5edf0
+  );
+}
+
+/* Övre rad */
+
+.weather-dashboard .weather-card-upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.weather-dashboard .weather-card-index {
+  font-family: var(--display);
+  font-size: 17px;
+  color: #879097;
+}
+
+.weather-dashboard .weather-card-category {
+  color: #929a9e;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+
+/* Stadens namn */
+
+.demo-section .weather-dashboard .weather-city-name {
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.05;
+  color: #30363b;
+  margin: 0;
+}
+
+/* Illustrationen */
+
+.weather-dashboard .weather-illustration {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 135px;
+  margin: 6px 0 3px;
+  isolation: isolate;
+}
+
+.weather-dashboard .weather-orbit {
+  position: absolute;
+  width: 114px;
+  height: 114px;
+  border-radius: 50%;
+  border: 1px solid rgba(79, 97, 107, .19);
+  transform: rotate(-20deg);
+  z-index: -1;
+}
+
+.weather-dashboard .weather-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px dashed rgba(79, 97, 107, .12);
+  border-radius: 50%;
+}
+
+.weather-dashboard .weather-symbol {
+  width: 106px;
+  height: 106px;
+  color: #697d88;
+  stroke-width: 1.65;
+  filter: drop-shadow(0 6px 7px rgba(50, 60, 65, .07));
+}
+
+.weather-card--klart .weather-symbol {
+  color: #ad9a84;
+}
+
+.weather-card--regn .weather-symbol,
+.weather-card--aska .weather-symbol {
+  color: #637989;
+}
+
+.weather-card--sno .weather-symbol {
+  color: #8b9fa9;
+}
+
+/* Temperatur */
+
+.weather-dashboard .weather-main-reading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.weather-dashboard .weather-main-number {
+  font-family: var(--display);
+  font-size: clamp(53px, 5.5vw, 77px);
+  line-height: 1;
+  letter-spacing: -.055em;
+  color: #30363b;
+}
+
+.weather-dashboard .weather-main-unit {
+  font-family: var(--display);
+  font-size: 31px;
+  color: #636d73;
+}
+
+.demo-section .weather-dashboard .weather-condition {
+  text-align: center;
+  font-family: var(--display);
+  font-size: 21px;
+  font-style: italic;
+  color: #606970;
+  margin: 7px 0 25px;
+}
+
+/* Extra väderinformation */
+
+.weather-dashboard .weather-card-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(87, 99, 106, .23);
+}
+
+.weather-dashboard .weather-card-details > div {
+  min-width: 0;
+  text-align: center;
+}
+
+.weather-dashboard .weather-card-details > div + div {
+  border-left: 1px solid rgba(87, 99, 106, .17);
+}
+
+.weather-dashboard .weather-card-details span {
+  display: block;
+  margin-bottom: 9px;
+  color: #79848b;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  white-space: nowrap;
+}
+
+.weather-dashboard .weather-card-details strong {
+  display: block;
+  color: #343c41;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Mobilanpassning */
+
+@media (max-width: 700px) {
+  .weather-dashboard .vader-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-section .weather-dashboard .vader-kort {
+    padding: 24px 20px;
+  }
+
+  .weather-dashboard .weather-main-number {
+    font-size: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-section .weather-dashboard .vader-kort {
+    transition: none;
+  }
+}

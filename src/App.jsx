@@ -34,12 +34,12 @@ const HERO_OPTIONS = [
 ];
 
 const BILDER = {
-  aboutDetail: "/images/about-writing.png",
+  aboutDetail: "/images/about-workspace.png",
   portrait: "/images/about-portrait.webp",
   closing: "/images/closing-ink.png",
-  weather: "/images/project-weather.webp",
+  weather: "/images/project-weather.png",
   todo: "/images/project-todo.webp",
-  oldPortfolio: "/images/project-original-portfolio.webp",
+  oldPortfolio: "/images/project-original-portfolio.png",
 };
 
 const PROJEKT = projektLista
