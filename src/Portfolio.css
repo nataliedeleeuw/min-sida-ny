@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* ============================================================
+   NATALIE DE LEEUW – REDAKTIONELL PORTFOLIO
+   Nära mockupen: varm elfenben, mörkt kol, bildöverlappar,
+   stora serif-rubriker, liten versalnavigation.
+   Alla nya färger och mått hålls här.
+   ============================================================ */
+:root {
+  --paper: #eee8e2;
+  --paper-light: #f6f1eb;
+  --ink: #222323;
+  --charcoal: #1e2021;
+  --slate: #4e5254;
+  --muted: #696460;
+  --line: #b9b2ac;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body: 'DM Sans', Arial, sans-serif;
+  font-family: var(--body);
+  color: var(--ink);
+  background: #404345;
+  color-scheme: light;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse 90% 65% at 50% 10%, #535657 0%, #414446 53%, #303335 100%);
+  font-family: var(--body);
+}
+#root { width: 100%; max-width: none; min-height: 100vh; margin: 0; padding: 0; border: 0; text-align: left; display: block; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+button { cursor: pointer; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid #8a7770; outline-offset: 4px; }
+::selection { background: #c3b6aa; color: #17191a; }
+.portfolio-shell {
+  width: min(1210px, calc(100% - 136px));
+  margin: 112px auto 74px;
+  background: var(--paper);
+  min-height: 100vh;
+  box-shadow: 0 28px 90px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+.portfolio-shell h1, .portfolio-shell h2, .portfolio-shell h3, .portfolio-shell p { margin-top: 0; }
+.portfolio-shell h1, .portfolio-shell h2, .portfolio-shell h3 { color: inherit; }
+
+/* Navigation och avsändare */
+.site-header { background: var(--paper-light); position: relative; z-index: 5; }
+.header-nav {
+  min-height: 132px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 28px;
+  padding: 20px clamp(28px,5.5vw,70px);
+}
+.nav-side { display: flex; align-items: center; gap: clamp(18px, 2.8vw, 38px); }
+.nav-side-right { justify-content: flex-end; }
+.nav-item, .footer-links a {
+  color: #232222;
+  text-decoration: none;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .20em;
+  white-space: nowrap;
+}
+.nav-item { padding: 10px 0 12px; border-bottom: 2px solid transparent; }
+.nav-item:hover, .nav-item.is-active { border-bottom-color: currentColor; }
+.brand { text-align: center; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; }
+.brand-name { font: 400 clamp(33px,3.5vw,47px)/.96 var(--display); white-space: nowrap; letter-spacing: -.025em; }
+.brand-subtitle { display: flex; align-items: center; gap: 22px; font-size: 11px; text-transform: uppercase; letter-spacing: .36em; font-weight: 700; padding-top: 15px; }
+.brand-subtitle i { width: 65px; height: 1px; background: #9b9895; display: block; }
+.mobile-menu-button { display: none; }
+
+/* Bilder läggs in senare. Fram till dess visas endast en diskret tonad yta. */
+.editorial-photo { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(135deg,#3a3836 0%,#27292a 50%,#3c3936 100%); }
+.editorial-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
+.editorial-photo.has-image img { opacity: 1; }
+.photo-placeholder { display: none; }
+.photo-placeholder-line { width: 70px; height: 1px; background: currentColor; opacity: .5; }
+.editorial-photo.has-image .photo-placeholder { display: none; }
+
+/* Återkommande små detaljer */
+.eyebrow { display: flex; align-items: center; gap: 18px; font-size: 10px; letter-spacing: .27em; text-transform: uppercase; font-weight: 700; line-height: 1.5; margin-bottom: 30px; }
+.eyebrow-rule { width: 62px; height: 1px; background: #827e79; display: inline-block; flex-shrink: 0; }
+.eyebrow-light { color: #f3eeeb; }
+.eyebrow-light .eyebrow-rule { background: rgba(255,255,255,.6); }
+.serif-section-title { font: 400 clamp(36px,3.55vw,49px)/.96 var(--display); letter-spacing: -.025em; }
+.serif-section-title em { font-style: italic; }
+.italic-heading { font-style: italic; }
+.heading-line { display: inline-block; width: 82px; height: 1px; background: currentColor; vertical-align: middle; margin-left: 18px; opacity: .7; }
+.subtle-link { display: inline-flex; align-items: center; gap: 20px; color: inherit; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: .17em; border-bottom: 1px solid currentColor; padding: 5px 0 9px; }
+.subtle-link span { font-size: 17px; }
+.subtle-link:hover { opacity: .65; }
+
+/* Startsida – bild, överlappande ljus textruta och citat */
+.home-hero { height: 442px; position: relative; background: #252422; color: #fff; }
+.hero-backdrop { position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 48%,#5a5047 0%,#322e2a 46%,#1c1d1e 85%); }
+.hero-backdrop:after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(16,17,17,.12),transparent 70%,rgba(15,15,15,.36)); pointer-events: none; }
+.hero-backdrop .photo-placeholder { padding-left: 48%; padding-top: 35%; opacity: .65; }
+.home-headline-card {
+  position: absolute;
+  z-index: 2;
+  top: 48px;
+  left: clamp(30px,6.2vw,78px);
+  width: min(43%,490px);
+  min-height: 314px;
+  background: linear-gradient(132deg,#f3efea,#e6ded8);
+  padding: 40px 43px 48px;
+  color: #222122;
+  box-shadow: 0 17px 25px rgba(0,0,0,.16);
+}
+.home-headline-card .eyebrow { margin-bottom: 24px; }
+.home-headline-card h1 { font: 400 clamp(44px,4.0vw,57px)/.93 var(--display); letter-spacing: -.033em; margin: 0; }
+.home-headline-card h1 em { font-weight: 400; }
+.home-hero-caption { position: absolute; right: 5.6%; top: 49%; width: 24%; max-width: 260px; color: #f6eeea; z-index: 2; }
+.home-hero-caption .eyebrow { margin-bottom: 20px; }
+.home-hero-caption p { font: italic 400 21px/1.14 var(--display); margin: 0; }
+
+/* Om mig-band – startsidan använder INTE ditt porträtt */
+.home-about { min-height: 325px; display: grid; grid-template-columns: 37% 63%; position: relative; background: linear-gradient(115deg,#555859,#45494b 70%,#55595a); color: #f4f0eb; }
+.home-about-photo { position: absolute; left: 3.2%; top: -74px; bottom: -25px; width: 31%; z-index: 3; border: 1px solid rgba(246,239,235,.4); box-shadow: 0 12px 24px rgba(0,0,0,.35); }
+.home-about-photo .photo-placeholder { font-size: 10px; }
+.home-about-copy { grid-column: 2; padding: 35px 8% 44px 2%; }
+.home-about-copy h2 { margin-bottom: 13px; }
+.home-about-copy > p { max-width: 610px; font-size: 16px; line-height: 1.58; margin: 0 0 28px; color: #f2efed; }
+.strengths { display: grid; grid-template-columns: repeat(4,1fr); margin-bottom: 18px; }
+.strengths > div { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 72px; border-right: 1px solid rgba(255,255,255,.44); }
+.strengths > div:last-child { border-right: 0; }
+.strengths svg { width: 31px; height: 31px; }
+.strengths span { font-size: 9px; letter-spacing: .19em; text-transform: uppercase; white-space: nowrap; text-align: center; font-weight: 600; }
+.home-about .subtle-link { margin-top: 4px; font-size: 9px; }
+
+/* Utvalda projekt */
+.home-projects { min-height: 410px; display: grid; grid-template-columns: 31% 69%; gap: 0; background: var(--paper-light); padding: 58px clamp(28px,4vw,59px) 64px; }
+.featured-intro { padding-right: 38px; }
+.featured-intro .eyebrow { margin-bottom: 25px; }
+.featured-intro h2 { margin-bottom: 24px; }
+.featured-intro p { font-size: 14px; line-height: 1.55; max-width: 255px; margin-bottom: 20px; }
+.subtle-link-dark { color: var(--ink); }
+.featured-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: start; }
+.project-tile { display: flex; flex-direction: column; text-decoration: none; min-width: 0; color: var(--ink); transition: transform .2s ease; }
+.project-tile:hover { transform: translateY(-3px); }
+.tile-photo { height: 190px; background: linear-gradient(135deg,#514b46,#313637); }
+.tile-caption { display: flex; gap: 10px; justify-content: space-between; background: #e7e0da; min-height: 90px; padding: 19px 18px 17px; }
+.tile-caption h3 { text-transform: uppercase; font-size: 12px; letter-spacing: .17em; font-weight: 700; margin-bottom: 8px; }
+.tile-caption p { font-size: 12px; line-height: 1.36; margin-bottom: 0; }
+.tile-arrow { align-self: flex-end; font-size: 28px; line-height: 1; transition: transform .2s ease; }
+.project-tile:hover .tile-arrow { transform: translateX(4px); }
+.tile-photo .photo-placeholder { font-size: 10px; }
+
+/* Avslutande citat och mörk sidfot */
+.closing-statement { position: relative; min-height: 282px; padding: 44px 8% 38px; isolation: isolate; background: #232525; color: #f1ede8; }
+.closing-backdrop { position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 80% 40%,#5b5752 0%,#2b2c2c 42%,#1d1e1e 85%); }
+.closing-backdrop:after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(17,17,17,.55),rgba(17,17,17,.1)); }
+.closing-backdrop .photo-placeholder { left: 52%; text-align: center; opacity: .6; }
+.closing-statement blockquote { font: 400 clamp(31px,3.5vw,48px)/.97 var(--display); letter-spacing: -.02em; max-width: 430px; margin: 0 0 26px; }
+.closing-statement blockquote em { font-weight: 400; }
+.statement-rule { width: 70px; height: 1px; background: #e6dfd6; display: block; }
+.site-footer { min-height: 112px; display: grid; grid-template-columns: 1fr 1.35fr .5fr; align-items: center; background: #1d1f20; color: #f4ede6; gap: 25px; padding: 23px 5.8%; border-top: 1px solid #444; }
+.footer-name { display: flex; flex-direction: column; gap: 4px; }
+.footer-name a { font: 400 28px/.98 var(--display); text-decoration: none; }
+.footer-name span { font-size: 10px; letter-spacing: .34em; text-transform: uppercase; font-weight: 700; }
+.footer-links { display: flex; align-items: center; justify-content: center; gap: 30px; border-left: 1px solid #828080; border-right: 1px solid #828080; min-height: 46px; }
+.footer-links a { color: #f4ede6; font-size: 9px; letter-spacing: .2em; }
+.footer-links a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.footer-socials { display: flex; align-items: center; justify-content: flex-end; gap: 26px; }
+.footer-socials a, .linkedin-placeholder { display: flex; justify-content: center; align-items: center; width: 25px; height: 25px; color: white; }
+.footer-socials svg { width: 24px; height: 24px; }
+.linkedin-placeholder { font: 800 18px/1 Arial,sans-serif; border: 2px solid currentColor; border-radius: 2px; opacity: .4; cursor: help; }
+
+/* Undersidor – samma språk som startsidan */
+.interior-page { padding: 76px clamp(38px,6.2%,80px) 100px; background: var(--paper-light); min-height: 620px; }
+.page-heading { margin-bottom: 55px; }
+.page-heading .eyebrow { margin-bottom: 25px; }
+.page-heading h1, .contact-intro h1, .detail-page h1, .not-found h1 { font: 400 clamp(55px,6vw,86px)/.92 var(--display); letter-spacing: -.035em; margin-bottom: 24px; }
+.page-heading h1 em, .contact-intro h1 em em { font-weight: 400; }
+.page-heading > p { max-width: 580px; font-size: 15px; line-height: 1.6; }
+
+/* Om mig */
+.about-layout { display: grid; grid-template-columns: 42% 1fr; gap: 7%; align-items: start; }
+.portrait-photo { min-height: 585px; background: linear-gradient(145deg,#66605b,#292a2b); }
+.about-body { padding-top: 16px; }
+.about-body h2 { font-size: clamp(37px,4vw,55px); margin-bottom: 30px; }
+.about-body > p { font-size: 15px; line-height: 1.78; max-width: 570px; margin-bottom: 18px; color: #3d3a38; }
+.about-detail-box { border-top: 1px solid #bcb5ae; border-bottom: 1px solid #bcb5ae; margin: 38px 0 31px; padding: 23px 0 24px; }
+.about-detail-box .eyebrow { margin-bottom: 15px; }
+.skill-list { display: flex; flex-wrap: wrap; gap: 10px 19px; list-style: none; padding: 0; margin: 0; }
+.skill-list li { font-size: 13px; }
+.skill-list li::before { content: '•'; margin-right: 9px; color: #888; }
+.editorial-button { display: inline-flex; align-items: center; gap: 32px; justify-content: space-between; color: #f7f3ec; background: #2c3031; border: 1px solid #2c3031; text-decoration: none; padding: 16px 22px; font-size: 11px; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; }
+.editorial-button:hover { background: #515252; }
+.editorial-button:disabled { opacity: .55; cursor: not-allowed; }
+.editorial-button span { font-size: 19px; font-weight: 400; line-height: .7; }
+
+/* Projektsida */
+.project-page-heading { border-bottom: 1px solid #c9c1b8; padding-bottom: 45px; margin-bottom: 36px; }
+.projects-toolbar { display: grid; grid-template-columns: minmax(200px,2fr) minmax(160px,1fr) minmax(150px,1fr); gap: 16px; align-items: end; }
+.projects-toolbar label { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; font-weight: 700; display: flex; flex-direction: column; gap: 10px; }
+.projects-toolbar input, .projects-toolbar select { border: 1px solid #bfb8b0; border-radius: 0; height: 48px; background: #fffbf7; padding: 0 13px; color: #292a2b; font-size: 12px; letter-spacing: 0; text-transform: none; min-width: 0; }
+.result-count { font-size: 12px; color: #77706b; margin: 19px 0 28px; }
+.all-projects-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 36px 26px; }
+.all-projects-grid .tile-photo { height: 270px; }
+.all-projects-grid .tile-caption { min-height: 112px; }
+.empty-results { padding: 40px 0; }
+.github-panel { margin-top: 70px; background: #e6dfd8; padding: 40px 42px; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.github-panel .eyebrow { margin-bottom: 13px; }
+.github-panel h2 { font: 400 38px/1 var(--display); margin-bottom: 10px; }
+.github-panel p { font-size: 14px; margin-bottom: 0; }
+.github-panel-content { width: 100%; padding-top: 20px; border-top: 1px solid #beb6b0; }
+.github-panel-content .github { background: transparent; }
+.github-panel-content .github-kort, .github-panel-content .github-profil { background: #f9f5ef; border-color: #d2c8be; }
+.github-panel-content a { color: #333; }
+
+/* Detaljsidor – bevara befintliga interaktiva funktioner */
+.detail-page { padding-left: max(8%, 50px); padding-right: max(8%, 50px); }
+.back-link { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-decoration: none; border-bottom: 1px solid #777; margin-bottom: 48px; padding-bottom: 5px; }
+.detail-page .eyebrow { margin-bottom: 17px; }
+.detail-page h1 { margin-bottom: 18px; }
+.detail-lead { font-size: 17px; line-height: 1.6; max-width: 650px; margin-bottom: 38px; }
+.detail-photo { width: 100%; height: 350px; margin-bottom: 50px; }
+.demo-section { background: #ebe5de; padding: 36px 38px; margin-bottom: 42px; }
+.demo-choice { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.demo-choice button { border-radius: 0; border: 1px solid #62605e; color: #222; background: transparent; padding: 11px 16px; }
+.demo-choice button.chosen { color: #fff; background: #292c2d; }
+.detail-technologies { padding-top: 30px; margin-top: 38px; border-top: 1px solid #c7c0b8; }
+.detail-technologies ul { display: flex; gap: 14px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+.detail-technologies li { font-size: 13px; border-bottom: 1px solid #666; padding: 8px 0; }
+.detail-note { padding: 22px 26px; border-left: 3px solid #777; background: #e9e2db; font-size: 14px; line-height: 1.6; margin-bottom: 28px; }
+.detail-page > .editorial-button { margin: 10px 0 28px; }
+/* Nollställ lila/blå rester från de gamla komponenternas tema */
+.demo-section .todo, .demo-section .vader, .demo-section .city-weather, .demo-section .statistik { background: transparent; color: #292a2b; border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+.demo-section .todo h2, .demo-section .vader h2, .demo-section .city-weather h2, .statistics-wrapper h2 { font: 400 34px/1 var(--display); margin: 0 0 16px; }
+.demo-section .todo p, .demo-section .vader p, .demo-section .city-weather p, .demo-section .statistik p { color: #393a3b; }
+.demo-section .todo input, .demo-section .city-weather select { border: 1px solid #b5aea6; border-radius: 0; background: #fffaf5; color: #252525; }
+.demo-section .todo button, .demo-section .vader button { border-radius: 0; background: #343839; color: #fff; border: 1px solid #343839; }
+.demo-section .vader-val button { color: #333; background: transparent; }
+.demo-section .vader-val button[aria-pressed='true'] { background: #343839; color: #fff; }
+.demo-section .vader-kort, .demo-section .city-weather-resultat { background: #f8f3ec; color: #2b2d2e; border: 1px solid #d3c9c0; border-radius: 0; box-shadow: none; }
+.demo-section .vader-kort h3 { color: #333; }
+.demo-section .todo .todo-rensa { background: #72625e; }
+.demo-section .statistik-stapel { background: #d0c8c0; }
+.demo-section .statistik-fyllning { background: #5c6163; }
+
+/* Kontakt */
+.contact-page { display: grid; grid-template-columns: 43% 1fr; gap: 7%; padding-top: 92px; padding-bottom: 105px; min-height: 740px; }
+.contact-intro .eyebrow { margin-bottom: 35px; }
+.contact-intro h1 { margin-bottom: 38px; }
+.contact-intro p { max-width: 365px; font-size: 15px; line-height: 1.75; margin-bottom: 16px; }
+.contact-intro a { text-decoration-thickness: 1px; text-underline-offset: 4px; word-break: break-word; }
+.contact-decor { border-top: 1px solid #bdb4ab; margin-top: 64px; padding-top: 28px; font: 400 38px/1 var(--display); color: #77716a; }
+.contact-card { background: #e9e3db; padding: 38px; box-shadow: 0 13px 32px rgba(0,0,0,.04); }
+.contact-card h2 { font: 400 38px/1 var(--display); margin-bottom: 30px; }
+.contact-card form { display: flex; flex-direction: column; }
+.contact-card .eyebrow { margin-bottom: 15px; }
+.contact-card label { display: flex; flex-direction: column; gap: 9px; font-size: 12px; font-weight: 700; margin-bottom: 22px; }
+.contact-card input, .contact-card textarea { width: 100%; border-radius: 0; padding: 14px 16px; background: #faf8f4; border: 1px solid #c6bdb4; color: #292a2b; font-size: 14px; font-weight: 400; resize: vertical; }
+.contact-card input::placeholder, .contact-card textarea::placeholder { color: #817d7a; }
+.contact-card .characters-left { color: #77736f; font-size: 12px; text-align: right; margin-top: -10px; margin-bottom: 25px; }
+.contact-card .editorial-button { align-self: flex-start; }
+.contact-card .form-error { color: #8f2828; margin-top: -7px; margin-bottom: 20px; font-size: 13px; }
+.contact-success p { font-size: 16px; line-height: 1.6; margin-bottom: 28px; }
+
+/* 404 och äldre övningar */
+.not-found { min-height: 520px; }
+.legacy-wrapper { background: #f6f1eb; }
+.legacy-wrapper .fizzbuzz { background: transparent; }
+
+@media (max-width: 1100px) {
+  .portfolio-shell { width: calc(100% - 92px); margin: 92px auto 52px; }
+  .header-nav { padding: 20px 28px; gap: 20px; }
+  .nav-side { gap: 15px; }
+  .nav-item { font-size: 10px; letter-spacing: .12em; }
+  .brand-name { font-size: 39px; }
+  .brand-subtitle i { width: 37px; }
+  .home-headline-card { width: 44%; padding: 34px; }
+  .home-headline-card h1 { font-size: 49px; }
+  .home-about-copy { padding-left: 0; }
+  .strengths span { font-size: 8px; letter-spacing: .1em; }
+  .footer-links { gap: 17px; }
+}
+@media (max-width: 800px) {
+  .portfolio-shell { width: 100%; margin: 0; }
+  .site-header { min-height: 98px; }
+  .mobile-menu-button { position: absolute; display: block; top: 39px; right: 24px; z-index: 10; background: none; border: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .18em; font-weight: 700; padding: 6px; }
+  .header-nav { display: flex; justify-content: center; min-height: 98px; padding: 15px 70px 15px 20px; }
+  .brand-name { font-size: 36px; }
+  .brand-subtitle { font-size: 9px; letter-spacing: .24em; padding-top: 12px; }
+  .brand-subtitle i { width: 32px; }
+  .nav-side { display: none; }
+  .header-nav.mobile-open .nav-side { display: flex; position: absolute; left: 0; right: 0; background: var(--paper-light); padding: 10px 26px; gap: 18px; flex-wrap: wrap; justify-content: center; z-index: 8; border-top: 1px solid #d9d2cc; }
+  .header-nav.mobile-open .nav-side-left { top: 98px; }
+  .header-nav.mobile-open .nav-side-right { top: 146px; padding-bottom: 18px; }
+  .home-hero { height: 530px; }
+  .home-headline-card { top: 32px; left: 6%; width: 67%; min-height: 0; padding: 30px; }
+  .home-headline-card h1 { font-size: clamp(40px,7.5vw,59px); }
+  .home-hero-caption { top: auto; bottom: 30px; left: 52%; right: 5%; width: auto; }
+  .home-about { display: block; min-height: 0; padding: 40px 7% 50px; }
+  .home-about-photo { width: 29%; left: 5%; top: -60px; bottom: auto; height: 275px; }
+  .home-about-copy { margin-left: 34%; padding: 0; }
+  .home-about-copy > p { font-size: 14px; }
+  .strengths { grid-template-columns: repeat(2,1fr); row-gap: 20px; }
+  .strengths > div:nth-child(2) { border-right: 0; }
+  .home-projects { grid-template-columns: 1fr; gap: 30px; padding: 55px 7% 60px; }
+  .featured-intro { padding: 0; }
+  .featured-intro h2 { max-width: 460px; }
+  .featured-intro p { max-width: 500px; }
+  .site-footer { grid-template-columns: 1fr auto; }
+  .footer-links { grid-column: 1/-1; grid-row: 2; border: 0; padding-top: 15px; border-top: 1px solid #515253; flex-wrap: wrap; justify-content: flex-start; }
+  .contact-page { grid-template-columns: 1fr; gap: 38px; }
+  .contact-decor { display: none; }
+  .about-layout { gap: 5%; }
+  .portrait-photo { min-height: 510px; }
+}
+@media (max-width: 560px) {
+  .brand-name { font-size: 31px; }
+  .brand-subtitle { gap: 11px; font-size: 8px; }
+  .brand-subtitle i { width: 17px; }
+  .home-hero { height: 640px; }
+  .hero-backdrop .photo-placeholder { padding: 0 15%; padding-top: 60%; }
+  .home-headline-card { width: 88%; left: 6%; top: 30px; padding: 30px 26px; }
+  .home-headline-card .eyebrow { margin-bottom: 18px; }
+  .home-headline-card h1 { font-size: clamp(42px,11vw,56px); }
+  .home-hero-caption { width: 72%; top: auto; bottom: 36px; left: 16%; right: 6%; text-align: left; }
+  .home-hero-caption p { font-size: 23px; }
+  .home-about { padding: 28px 8% 50px; }
+  .home-about-photo { position: relative; top: -64px; left: 0; width: 54%; height: 230px; margin-bottom: -38px; box-shadow: 0 10px 18px rgba(0,0,0,.15); }
+  .home-about-copy { margin-left: 0; }
+  .home-about-copy h2 { font-size: 43px; }
+  .home-about-copy > p { font-size: 15px; }
+  .strengths span { font-size: 9px; }
+  .home-projects { padding: 55px 7% 58px; }
+  .featured-grid, .all-projects-grid { grid-template-columns: 1fr; gap: 24px; }
+  .tile-photo { height: 215px; }
+  .closing-statement { min-height: 280px; padding: 45px 7% 35px; }
+  .closing-statement blockquote { font-size: 40px; max-width: 300px; }
+  .site-footer { gap: 20px; padding: 32px 7%; }
+  .footer-name a { font-size: 25px; }
+  .footer-links { gap: 13px 19px; }
+  .footer-links a { font-size: 8px; }
+  .footer-socials { gap: 15px; }
+  .interior-page { padding: 52px 7% 75px; }
+  .page-heading h1, .detail-page h1, .contact-intro h1, .not-found h1 { font-size: 58px; }
+  .about-layout { grid-template-columns: 1fr; gap: 36px; }
+  .portrait-photo { min-height: 0; aspect-ratio: 4/5; }
+  .projects-toolbar { grid-template-columns: 1fr; }
+  .all-projects-grid .tile-photo { height: 215px; }
+  .github-panel { padding: 32px 25px; }
+  .demo-section { padding: 26px 19px; }
+  .detail-photo { height: 220px; }
+  .contact-page { padding-top: 54px; }
+  .contact-card { padding: 27px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project-tile, .tile-arrow, .editorial-photo img { transition: none; }
+}
+
+/* ==================================================
+   YTTRE INRAMADE DESIGNEN – GRÅBLÅ VERSION
+   ================================================== */
+
+/* Bakgrunden runt webbplatsen */
+html {
+  background-color: #34414b;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+
+  background: radial-gradient(
+    ellipse 95% 85% at 50% 26%,
+    #44505a 0%,
+    #394550 52%,
+    #303b46 100%
+  );
+}
+
+/* Själva webbplatsens bredd och placering */
+.portfolio-shell {
+  width: min(
+    1210px,
+    calc(100% - clamp(108px, 14vw, 200px))
+  );
+
+  margin: 0 auto;
+  min-height: 100vh;
+
+  box-shadow: 0 0 70px rgba(9, 16, 21, 0.23);
+}
+
+/* Dekorativa vertikala linjer */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  display: block;
+
+  width: 1px;
+  background: rgba(199, 211, 218, 0.63);
+
+  pointer-events: none;
+}
+
+/* Längre linje på vänster sida */
+body::before {
+  left: clamp(22px, 2.9vw, 44px);
+  top: 24vh;
+  height: 50vh;
+}
+
+/* Kortare linje på höger sida */
+body::after {
+  right: clamp(22px, 2.9vw, 44px);
+  top: 0;
+  height: 23vh;
+}
+
+/* Anpassning för mellanstora skärmar */
+@media (max-width: 1100px) {
+  .portfolio-shell {
+    width: calc(
+      100% - clamp(108px, 14vw, 154px)
+    );
+
+    margin: 0 auto;
+  }
+}
+
+/* Mobil: webbplatsen använder hela skärmbredden */
+@media (max-width: 800px) {
+  .portfolio-shell {
+    width: 100%;
+    margin: 0;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+}
+/* Handritad överstrykning i huvudrubriken */
+
+.crossed-thought {
+  display: inline;
+  color: #77716d;
+  font-style: italic;
+  text-decoration-line: line-through;
+  text-decoration-color: #292929;
+  text-decoration-thickness: 2px;
+}

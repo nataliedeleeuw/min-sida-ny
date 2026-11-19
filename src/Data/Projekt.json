@@ -1,9 +1,8 @@
-
 [
   {
     "id": 1,
-    "titel": "Min sida",
-    "text": "Min portfolio, byggd med React och CSS.",
+    "titel": "Work in Progress – min första portfolio",
+    "text": "Min första portfolio, där jag experimenterade med färg, illustrationer och interaktiva funktioner. Byggd med React och CSS.",
     "bild": "Hero 2.webp",
     "lank": "https://github.com/nataliedeleeuw/min-sida-experiment",
     "teknik": ["React", "CSS", "Git"]
@@ -25,13 +24,5 @@
     "lank": "",
     "demo": "vader",
     "teknik": ["React", "JavaScript", "API"]
-  },
-  {
-    "id": 4,
-    "titel": "Kattens ljusdimmer",
-    "text": "En interaktiv ljusdimmer som styr kattens lampa och kvällsläge på startsidan.",
-    "bild": "Hero 5.webp",
-    "lank": "/",
-    "teknik": ["React", "useState", "JavaScript"]
   }
 ]
