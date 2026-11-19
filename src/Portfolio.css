@@ -1546,3 +1546,30 @@ body {
     transition: none;
   }
 }
+/* Kompaktare projektsektion på startsidan */
+
+.home-personal .home-projects {
+  padding: 45px clamp(28px, 5vw, 70px) 48px;
+}
+
+.home-personal .featured-intro {
+  margin-bottom: 28px;
+}
+
+.home-personal .featured-grid {
+  gap: 20px;
+  width: min(100%, 590px);
+  margin: 0 auto;
+}
+
+.home-personal .project-tile {
+  padding: 10px;
+}
+
+.home-personal .tile-caption {
+  padding: 14px 6px 5px;
+}
+
+.home-personal .featured-more {
+  margin-top: 24px;
+}
