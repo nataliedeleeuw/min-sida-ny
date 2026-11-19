@@ -1003,3 +1003,354 @@ body::after {
     transition: none;
   }
 }
+
+/* =========================================
+   KOM IHÅG-LISTAN – REDAKTIONELL DESIGN
+   ========================================= */
+
+/* Dölj tom projektbild */
+.detail-page:has(.todo-board) .detail-photo:not(.has-image) {
+  display: none;
+}
+
+/* Mörk inramning */
+.detail-page:has(.todo-board) .demo-section {
+  background: #374047;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.detail-page:has(.todo-board) .demo-section > .eyebrow {
+  color: #e5e0d9;
+}
+
+/* Återställ komponentens gamla mått */
+.detail-page .demo-section .todo.todo-board {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Inledningen */
+.todo-board .todo-editorial-head {
+  position: relative;
+  padding: 18px 0 45px;
+  color: #f5f0e9;
+}
+
+.todo-board .todo-kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #b8c2c7;
+  font-size: 9px;
+  letter-spacing: .17em;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  padding-bottom: 17px;
+  margin-bottom: 27px;
+}
+
+.detail-page .demo-section .todo-board .todo-editorial-head h2 {
+  font-family: var(--display);
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: #f7f1eb;
+  margin: 0 0 20px;
+}
+
+.todo-board .todo-editorial-head h2 em {
+  font-weight: 400;
+}
+
+.detail-page .demo-section .todo-board .todo-intro {
+  max-width: 440px;
+  color: #c9cdd0;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.todo-board .todo-doodle {
+  position: absolute;
+  right: 10px;
+  bottom: 35px;
+  width: 115px;
+  color: #aebbc2;
+  opacity: .8;
+  transform: rotate(-8deg);
+}
+
+/* Det ljusa anteckningspapperet */
+.todo-board .todo-paper {
+  position: relative;
+  background: #f5f0e9;
+  border: 1px solid #dcd4ca;
+  padding: clamp(23px, 4vw, 36px);
+  box-shadow: 9px 10px 0 rgba(0,0,0,.12);
+}
+
+.todo-board .todo-paper-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 31px;
+  border-bottom: 1px solid #c9c2ba;
+  color: #85837f;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+
+/* Formulär */
+.detail-page .demo-section .todo-board .todo-entry {
+  display: block;
+}
+
+.todo-board .todo-entry label {
+  display: block;
+  font-family: var(--display);
+  font-size: 29px;
+  font-weight: 500;
+  color: #303539;
+  margin-bottom: 17px;
+}
+
+.todo-board .todo-entry-row {
+  display: flex;
+  gap: 0;
+}
+
+.detail-page .demo-section .todo-board .todo-entry-row input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  padding: 0 15px;
+  border: 1px solid #beb7af;
+  border-radius: 0;
+  background: #fffdfa;
+  color: #303539;
+  font: 13px var(--body);
+}
+
+.detail-page .demo-section .todo-board .todo-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-width: 135px;
+  padding: 12px 18px;
+  background: #343d42;
+  color: #fff;
+  border: 1px solid #343d42;
+  border-radius: 0;
+  font: 600 12px var(--body);
+  cursor: pointer;
+}
+
+.todo-board .todo-add span {
+  font-size: 24px;
+  line-height: .6;
+  font-weight: 300;
+}
+
+/* Statusrad */
+.todo-board .todo-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #d0c9c1;
+  padding: 25px 0 13px;
+}
+
+.detail-page .demo-section .todo-board .todo-antal {
+  margin: 0;
+  color: #697278;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.detail-page .demo-section .todo-board .todo-rensa {
+  margin: 0;
+  padding: 6px 0;
+  border: 0;
+  border-bottom: 1px solid #aaa19a;
+  border-radius: 0;
+  color: #626264;
+  background: transparent;
+  font: 11px var(--body);
+  cursor: pointer;
+}
+
+/* Tom lista */
+.todo-board .todo-empty {
+  text-align: center;
+  padding: 43px 10px 48px;
+}
+
+.todo-board .todo-empty-symbol {
+  display: block;
+  color: #9ba8ae;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.detail-page .demo-section .todo-board .todo-empty p {
+  font-family: var(--display);
+  font-size: 32px;
+  font-style: italic;
+  color: #4c555a;
+  margin: 0 0 7px;
+}
+
+.todo-board .todo-empty > span:last-child {
+  color: #92908d;
+  font-size: 12px;
+}
+
+/* Påminnelselistan */
+.todo-board .todo-list {
+  list-style: none;
+  padding: 15px 0 5px;
+  margin: 0;
+}
+
+.todo-board .todo-note {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 4px;
+  margin: 0;
+  border-bottom: 1px solid #d9d2c9;
+}
+
+.detail-page .demo-section .todo-board .todo-check {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  padding: 0;
+  border: 1px solid #89969c;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.detail-page .demo-section .todo-board .todo-check[aria-pressed="true"] {
+  background: #52636c;
+  border-color: #52636c;
+}
+
+.todo-board .todo-note-text {
+  flex: 1;
+  color: #33383c;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.todo-board .todo-note.is-done .todo-note-text {
+  text-decoration: line-through;
+  color: #929391;
+}
+
+.detail-page .demo-section .todo-board .todo-delete {
+  padding: 3px 7px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #8a8c8d;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.detail-page .demo-section .todo-board .todo-delete:hover {
+  color: #24282b;
+}
+
+/* Liten avslutande detalj */
+.todo-board .todo-paper-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 14px;
+  border-top: 1px solid #d0c9c1;
+  color: #99958f;
+  font-size: 9px;
+  letter-spacing: .17em;
+}
+
+.todo-board .todo-paper-bottom span:last-child {
+  font-size: 19px;
+  color: #8b9ca4;
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+  .todo-board .todo-entry-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .detail-page .demo-section .todo-board .todo-add {
+    min-height: 48px;
+  }
+
+  .todo-board .todo-kicker,
+  .todo-board .todo-paper-top {
+    flex-wrap: wrap;
+    line-height: 1.5;
+  }
+
+  .todo-board .todo-doodle {
+    width: 72px;
+    right: 0;
+    bottom: 22px;
+  }
+}
+/* TEST – Inramad webbplats */
+
+html,
+body {
+  background: #29303c;
+}
+
+@media (min-width: 801px) {
+  body {
+    padding-top: 0px;
+  }
+
+  .portfolio-shell {
+    width: min(1150px, calc(100% - 20vw));
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    padding-top: 0;
+  }
+}
+/* Projektbilder ska inte döljas av laddningsstatus */
+.project-tile .tile-photo img {
+  opacity: 1;
+}
+/* Anpassa huvudrubriken till den smalare layouten */
+@media (min-width: 801px) {
+  .home-personal .home-headline-card h1 {
+    font-size: clamp(35px, 3.3vw, 50px);
+    line-height: 1.02;
+  }
+
+  .home-personal .crossed-thought {
+    white-space: nowrap;
+  }
+}

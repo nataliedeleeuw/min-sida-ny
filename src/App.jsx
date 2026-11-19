@@ -38,7 +38,7 @@ const BILDER = {
   portrait: "/images/about-portrait.webp",
   closing: "/images/closing-ink.png",
   weather: "/images/project-weather.png",
-  todo: "/images/project-todo.webp",
+  todo: "/images/project-todo.png",
   oldPortfolio: "/images/project-original-portfolio.png",
 };
 
@@ -149,7 +149,11 @@ function Photo({
       <img
         src={src}
         alt={alt}
-        loading={className.includes("hero") ? "eager" : "lazy"}
+        loading={
+  className.includes("hero") || className.includes("tile-photo")
+    ? "eager"
+    : "lazy"
+}
         onLoad={() => setLoaded(true)}
         onError={() => setLoaded(false)}
       />
@@ -507,21 +511,6 @@ function Home() {
   <em className="pencil-em">skapa.</em>
 </h1>
 
-          <div className="draft-signature" aria-hidden="true">
-            <svg
-              viewBox="0 0 90 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.1"
-              strokeLinecap="round"
-            >
-              <path d="M2 10 Q19 6 36 11 T68 10 Q78 9 88 10" />
-              <path d="M10 15 Q30 13 47 15" opacity=".5" />
-            </svg>
-
-            <span>utkast pågår</span>
-          </div>
-
         </div>
 
         <div className="home-hero-caption">
@@ -554,27 +543,7 @@ function Home() {
             bli väldigt engagerad när något fångar mitt intresse.
           </p>
 
-          <div className="strengths" aria-label="Mina intresseområden">
-            <div>
-              <Icon name="pencil" />
-              <span>Skrivande</span>
-            </div>
-
-            <div>
-              <Icon name="code" />
-              <span>Kod</span>
-            </div>
-
-            <div>
-              <Icon name="layers" />
-              <span>Projekt</span>
-            </div>
-
-            <div>
-              <Icon name="light" />
-              <span>Idéer</span>
-            </div>
-          </div>
+       
 
           <Link to="/om-mig" className="subtle-link">
             Läs mer om mig
