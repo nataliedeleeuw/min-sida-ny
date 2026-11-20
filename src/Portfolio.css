@@ -1396,20 +1396,19 @@ body {
   }
 }
 
-/* ======================================
-   STARTSIDA – UTVALDA PROJEKT
-   ====================================== */
+/* ==========================================
+   STARTSIDA – REDAKTIONELLT PROJEKTGALLERI
+   ========================================== */
 
 .home-personal .home-projects {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  padding: 65px clamp(28px, 5vw, 70px) 72px;
+  align-items: center;
+  padding: 45px clamp(28px, 5vw, 65px) 52px;
   background: #f6f1eb;
 }
 
-/* Centrerad introduktion */
+/* Centrerad rubrik */
 
 .home-personal .featured-intro {
   display: flex;
@@ -1417,57 +1416,64 @@ body {
   align-items: center;
   text-align: center;
   padding: 0;
-  margin: 0 0 42px;
+  margin: 0 0 32px;
 }
 
 .home-personal .featured-intro .eyebrow {
-  margin: 0 0 22px;
+  margin-bottom: 20px;
 }
 
 .home-personal .featured-intro h2 {
-  font-size: clamp(38px, 4vw, 53px);
+  font-size: clamp(36px, 4vw, 49px);
   line-height: 1.1;
   margin: 0;
 }
 
-/* Två jämnstora projektkort */
+/* Två bilder bredvid varandra */
 
 .home-personal .featured-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
-  align-items: stretch;
-  width: 100%;
+  gap: clamp(25px, 4vw, 48px);
+  width: min(100%, 760px);
+  margin: 0 auto;
+  align-items: start;
 }
+
+/* Ta bort kortens utseende */
 
 .home-personal .project-tile {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   min-width: 0;
-  padding: 14px;
-  background: #343d45;
-  border: 1px solid #4c565e;
-  color: #f6f1eb;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #292d30;
+  box-shadow: none;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(30, 35, 40, .13);
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .2s ease;
 }
 
 .home-personal .project-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 28px rgba(30, 35, 40, .2);
+  transform: translateY(-3px);
+  box-shadow: none;
 }
 
-/* Projektbilderna */
+/* Bilder som separata tryck */
 
 .home-personal .tile-photo {
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
-  background: #f5f0eb;
-  border: 1px solid rgba(255,255,255,.18);
   overflow: hidden;
+  background: #f6f1eb;
+  border: 1px solid #d0c9c1;
+
+  box-shadow:
+    0 3px 8px rgba(35, 40, 43, .08),
+    0 11px 22px rgba(35, 40, 43, .12);
 }
 
 .home-personal .tile-photo img {
@@ -1475,17 +1481,21 @@ body {
   object-position: center;
 }
 
-/* Text under bilderna */
+/* Bildtexter i stället för kort */
 
 .home-personal .tile-caption {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  flex: 1;
-  gap: 16px;
+  gap: 15px;
+
+  height: auto;
   min-height: 0;
-  padding: 22px 8px 8px;
+  padding: 17px 0 0;
+
   background: transparent;
-  color: #f6f1eb;
+  color: #303538;
 }
 
 .home-personal .tile-caption > div {
@@ -1494,107 +1504,56 @@ body {
 }
 
 .home-personal .tile-caption h3 {
-  color: #f6f1eb;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: .13em;
-  margin: 0 0 11px;
-}
-
-.home-personal .tile-caption p {
-  color: #d3d8db;
-  font-size: 12px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.home-personal .tile-arrow {
-  align-self: flex-end;
-  color: #f0e6da;
-  font-size: 25px;
-  flex-shrink: 0;
-}
-
-/* Länk under korten */
-
-.home-personal .featured-more {
-  align-self: center;
-  margin-top: 37px;
-  color: #30363a;
-}
-
-/* Mobilanpassning */
-
-@media (max-width: 750px) {
-  .home-personal .home-projects {
-    padding: 52px 7% 65px;
-  }
-
-  .home-personal .featured-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .home-personal .featured-intro {
-    margin-bottom: 35px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-personal .project-tile {
-    transition: none;
-  }
-}
-
-/* Projektsektion – bredare och lägre kort */
-
-.home-personal .home-projects {
-  padding: 40px clamp(28px, 5vw, 70px) 45px;
-}
-
-.home-personal .featured-intro {
-  margin-bottom: 23px;
-}
-
-.home-personal .featured-grid {
-  width: min(100%, 740px);
-  gap: 45px;
-  margin: 0 auto;
-}
-
-.home-personal .project-tile {
-  padding: 10px;
-}
-
-.home-personal .tile-photo {
-  aspect-ratio: 16 / 9;
-}
-
-.home-personal .tile-caption {
-  min-height: 48px;
-  padding: 12px 5px 4px;
-  align-items: center;
-  gap: 10px;
-}
-
-.home-personal .tile-caption h3 {
-  margin: 0;
+  color: #303538;
   font-size: 11px;
-  line-height: 1.5;
-  letter-spacing: .1em;
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: .11em;
+  margin: 0;
 }
 
-/* Beskrivningarna visas på projektsidorna istället */
+/* Beskrivningarna finns kvar på projektsidorna */
+
 .home-personal .tile-caption p {
   display: none;
 }
 
+/* Diskret pil */
+
 .home-personal .tile-arrow {
+  color: #303538;
+  font-size: 23px;
+  flex-shrink: 0;
   align-self: center;
-  font-size: 22px;
+  margin-left: auto;
 }
 
+/* Länken under galleriet */
+
 .home-personal .featured-more {
-  margin-top: 22px;
+  align-self: center;
+  margin-top: 36px;
+  color: #303538;
+}
+
+/* Mindre skärmar */
+
+@media (max-width: 720px) {
+  .home-personal .home-projects {
+    padding: 45px 7% 55px;
+  }
+
+  .home-personal .featured-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    gap: 30px;
+  }
+
+  .home-personal .featured-intro {
+    margin-bottom: 30px;
+  }
+
+  .home-personal .featured-more {
+    margin-top: 30px;
+  }
 }
