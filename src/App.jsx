@@ -77,68 +77,14 @@ const PROJEKT = projektLista
     };
   });
 
-function Icon({ name, size = 34 }) {
-  const shared = {
-    width: size,
-    height: size,
-    viewBox: "0 0 48 48",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.5,
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    "aria-hidden": true,
-  };
-
-  if (name === "code") {
-    return (
-      <svg {...shared}>
-        <path d="m17 15-9 9 9 9M31 15l9 9-9 9M28 10l-8 28" />
-      </svg>
-    );
-  }
-
-  if (name === "pencil") {
-    return (
-      <svg {...shared}>
-        <path d="M29 8 40 19 17 42 6 43 8 32 29 8ZM25 13l10 10M8 32l9 10M11 37l3 3" />
-      </svg>
-    );
-  }
-
-  if (name === "layers") {
-    return (
-      <svg {...shared}>
-        <path d="m24 7 18 10-18 10L6 17 24 7ZM6 24l18 10 18-10M6 31l18 10 18-10" />
-      </svg>
-    );
-  }
-
-  if (name === "light") {
-    return (
-      <svg {...shared}>
-        <path
-          d="M17 31c0-5-7-7-7-16a14 14 0 0 1 28 0c0 9-7 11-7 16M18 36h12M20 41h8M23 4V1M5 14H2M46 14h-3M9 5 6 2M39 5l3-3"
-          transform="translate(0 3) scale(.96)"
-        />
-      </svg>
-    );
-  }
-
-  return null;
-}
-
 function Photo({
   src,
   label,
   className = "",
   alt = "",
 }) {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(false);
-  }, [src]);
+  const [loadedSrc, setLoadedSrc] = useState(null);
+const loaded = Boolean(src) && loadedSrc === src;
 
   return (
     <div
@@ -154,8 +100,8 @@ function Photo({
     ? "eager"
     : "lazy"
 }
-        onLoad={() => setLoaded(true)}
-        onError={() => setLoaded(false)}
+        onLoad={() => setLoadedSrc(src)}
+onError={() => setLoadedSrc(null)}
       />
 
       {!loaded && (
@@ -178,13 +124,11 @@ function ScrollToTop() {
   return null;
 }
 
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { pathname } = useLocation();
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  const closeMenu = () => setMenuOpen(false);
 
   const classFor = ({ isActive }) =>
     isActive ? "nav-item is-active" : "nav-item";
@@ -207,11 +151,20 @@ function Header() {
         aria-label="Huvudmeny"
       >
         <div className="nav-side nav-side-left">
-          <NavLink to="/" end className={classFor}>
+          <NavLink
+            to="/"
+            end
+            className={classFor}
+            onClick={closeMenu}
+          >
             Hem
           </NavLink>
 
-          <NavLink to="/projekt" className={classFor}>
+          <NavLink
+            to="/projekt"
+            className={classFor}
+            onClick={closeMenu}
+          >
             Projekt
           </NavLink>
         </div>
@@ -220,6 +173,7 @@ function Header() {
           to="/"
           className="brand"
           aria-label={`${NAMN}, till startsidan`}
+          onClick={closeMenu}
         >
           <span className="brand-name">{NAMN}</span>
 
@@ -231,11 +185,19 @@ function Header() {
         </Link>
 
         <div className="nav-side nav-side-right">
-          <NavLink to="/om-mig" className={classFor}>
+          <NavLink
+            to="/om-mig"
+            className={classFor}
+            onClick={closeMenu}
+          >
             Om mig
           </NavLink>
 
-          <NavLink to="/kontakt" className={classFor}>
+          <NavLink
+            to="/kontakt"
+            className={classFor}
+            onClick={closeMenu}
+          >
             Kontakt
           </NavLink>
         </div>
@@ -243,6 +205,7 @@ function Header() {
     </header>
   );
 }
+
 
 function Footer() {
   return (
@@ -260,25 +223,17 @@ function Footer() {
       </nav>
 
       <div className="footer-socials">
-        <a
-          href={`https://github.com/${GITHUB_ANVANDARE}`}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="GitHub"
-          title="GitHub"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 .8A11.2 11.2 0 0 0 8.46 22.6c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.33-3.76-1.33-.5-1.27-1.22-1.22-1.6-1-.68.08-.67.08-.67 1.11.08 1.7 1.14 1.7 1.14.99 1.7 2.6 1.2 3.23.9.1-.72.39-1.2.71-1.48-2.47-.28-5.07-1.24-5.07-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.14A10.7 10.7 0 0 1 12 6.64c.95 0 1.9.13 2.8.38 2.14-1.44 3.07-1.14 3.07-1.14.61 1.54.23 2.68.12 2.96.72.78 1.14 1.78 1.14 3.01 0 4.3-2.61 5.24-5.1 5.52.4.35.75 1.03.75 2.08v2.6c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z" />
-          </svg>
-        </a>
+        
+<a
+  href={`https://github.com/${GITHUB_ANVANDARE}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="GitHub-profil"
+>
+  GitHub
+</a>
 
-        <span
-          className="linkedin-placeholder"
-          title="LinkedIn-länk kan läggas till senare"
-          aria-label="LinkedIn-länk tillkommer"
-        >
-          in
-        </span>
+
       </div>
     </footer>
   );
@@ -293,9 +248,24 @@ function Eyebrow({ children, light = false }) {
   );
 }
 
-function ProjectTile({ project }) {
+
+function ProjectTile({ project, shortTitle = false }) {
+  const isExternal = Boolean(project.live);
+
+  const TileLink = isExternal ? "a" : Link;
+
+  const linkProps = isExternal
+    ? {
+        href: project.live,
+        target: "_blank",
+        rel: "noopener noreferrer",
+      }
+    : {
+        to: `/projekt/${project.id}`,
+      };
+
   return (
-    <Link className="project-tile" to={`/projekt/${project.id}`}>
+    <TileLink className="project-tile" {...linkProps}>
       <Photo
         src={project.bild}
         label={`Projektbild: ${project.titel}`}
@@ -304,7 +274,12 @@ function ProjectTile({ project }) {
 
       <div className="tile-caption">
         <div>
-          <h3>{project.titel}</h3>
+          <h3>
+            {shortTitle && project.id === "1"
+              ? "Min första portfolio"
+              : project.titel}
+          </h3>
+
           <p>{project.text}</p>
         </div>
 
@@ -312,9 +287,10 @@ function ProjectTile({ project }) {
           ⟶
         </span>
       </div>
-    </Link>
+    </TileLink>
   );
 }
+
 
 const STARTSIDA_STIL = `
   .home-personal .home-headline-card {
@@ -482,7 +458,6 @@ const STARTSIDA_STIL = `
 `;
 
 function Home() {
-  const [heroIndex, setHeroIndex] = useState(0);
 
   const featured = [
     PROJEKT.find((p) => p.id === "1"),
@@ -495,7 +470,7 @@ function Home() {
 
       <section className="home-hero" aria-labelledby="home-heading">
         <Photo
-          src={HERO_OPTIONS[heroIndex]}
+         src={HERO_OPTIONS[0]}
           label="Monokrom hero-bild"
           className="hero-backdrop"
         />
@@ -564,7 +539,11 @@ function Home() {
 
   <div className="featured-grid">
     {featured.map((project) => (
-      <ProjectTile key={project.id} project={project} />
+      <ProjectTile
+  key={project.id}
+  project={project}
+  shortTitle
+/>
     ))}
   </div>
 
@@ -584,79 +563,89 @@ function Home() {
           label="Abstrakt avslutande bild"
           className="closing-backdrop"
         />
-
-        <blockquote>
-          Bra lösningar brukar börja med att något skaver lite.
-        </blockquote>
-
-        <span className="statement-rule" aria-hidden="true" />
       </section>
     </main>
   );
 }
 
+
+
 function About() {
   return (
-    <main className="interior-page about-page">
-      <div className="page-heading">
-        <Eyebrow>Bakom skärmen</Eyebrow>
+    <main className="interior-page about-page about-editorial">
+      <header className="about-editorial-hero">
+        <Eyebrow>Om mig</Eyebrow>
 
-        <h1>
-          Nyfiken av naturen.
-          <br />
-          <em>Utvecklare på väg.</em>
-        </h1>
-      </div>
+        <h1>Hej, jag heter Natalie.</h1>
 
-      <div className="about-layout">
-        <Photo
-          src={BILDER.portrait}
-          label="Ditt porträtt placeras här, endast på Om mig-sidan"
-          className="portrait-photo"
-          alt="Porträtt av Natalie de Leeuw"
-        />
+        <p className="about-editorial-lead">
+          Jag skriver berättelser, pluggar psykologi och
+          har nyligen gett mig på programmering.
+        </p>
+      </header>
 
-        <div className="about-body">
-          <h2 className="serif-section-title">Hej, jag heter Natalie.</h2>
-
-          <p>
-            Jag tycker om att lära mig nya saker och förstå varför de fungerar.
-            Mitt intresse rör sig mellan psykologi, skrivande och teknik, och
-            just nu läser jag programmering inom Tech Trainee.
-          </p>
-
-          <p>
-            Jag trivs när jag får kombinera struktur och kreativitet: förstå
-            ett problem, utforska olika lösningar och sedan bygga något som
-            faktiskt går att använda.
-          </p>
-
-          <p>
-            För mig handlar bra digitala upplevelser inte bara om att något
-            fungerar. Det ska också vara lätt att förstå, behagligt att använda
-            och genomtänkt från början till slut.
-          </p>
-
-          <div className="about-detail-box">
-            <Eyebrow>Verktyg jag arbetar med</Eyebrow>
-
-            <ul className="skill-list">
-              <li>React</li>
-              <li>JavaScript</li>
-              <li>CSS</li>
-              <li>Git &amp; GitHub</li>
-            </ul>
-          </div>
-
-          <Link to="/kontakt" className="editorial-button">
-            Kontakta mig
-            <span aria-hidden="true">↗</span>
-          </Link>
+      <section
+        className="about-editorial-story"
+        aria-label="Lite mer om mig"
+      >
+        <div className="about-editorial-side">
+          <img
+            src="/images/natalie-svartvit.png"
+            alt="Svartvitt porträtt av Natalie"
+            className="about-small-portrait"
+            loading="lazy"
+          />
         </div>
+
+        <div className="about-editorial-copy">
+          <p>
+            Jag har alltid tyckt om att skriva berättelser.
+            Psykologi är ett annat stort intresse, särskilt
+            hur människor tänker och fungerar. Det är två
+            områden där jag lätt kan fastna i detaljer
+            i flera timmar.
+          </p>
+
+          <p>
+            Nu studerar jag programmering inom Tech Trainee.
+            Jag gillar att få bygga något eget och förstå
+            hur det fungerar. Även om jag ibland får lägga
+            orimligt mycket tid på att förstå varför
+            något plötsligt slutat fungera.
+          </p>
+
+          <p>
+            Jag är fortfarande i början och har mycket
+            kvar att lära mig. Projekten här är sådant
+            jag har byggt och experimenterat med
+            under utbildningen.
+          </p>
+        </div>
+      </section>
+
+      <div className="about-editorial-bottom">
+        <div className="about-editorial-tools">
+          <Eyebrow>Det jag arbetar med just nu</Eyebrow>
+
+          <p>
+            React <span>·</span> JavaScript
+            <span> · </span> CSS
+            <span> · </span> Git &amp; GitHub
+          </p>
+        </div>
+
+        <Link
+          to="/kontakt"
+          className="subtle-link subtle-link-dark"
+        >
+          Hör av dig
+          <span aria-hidden="true">↗</span>
+        </Link>
       </div>
     </main>
   );
 }
+
 
 function Projects() {
   const [query, setQuery] = useState("");
@@ -696,9 +685,7 @@ function Projects() {
       <div className="page-heading project-page-heading">
         <Eyebrow>Utvalda arbeten och övningar</Eyebrow>
 
-        <h1>
-          Från tanke till <em>fungerande lösning.</em>
-        </h1>
+<h1>Mina projekt.</h1>
 
         <p>
           Ett urval av det jag bygger, testar och lär mig inom webbutveckling.
@@ -758,7 +745,18 @@ function Projects() {
           </p>
         )}
       </section>
+          <section className="demo-section statistics-wrapper projects-statistics">
+  <Eyebrow>Projektstatistik</Eyebrow>
 
+  <h2>Teknikerna i mina projekt</h2>
+
+  <p>
+    En sammanställning av vilka tekniker
+    jag har använt i projekten hittills.
+  </p>
+
+  <Statistik />
+</section>
       <section className="github-panel">
         <div>
           <Eyebrow>Bakom kulisserna</Eyebrow>
@@ -855,21 +853,6 @@ function ProjectDetail() {
         </section>
       )}
 
-      {id === "1" && (
-        <section className="demo-section statistics-wrapper">
-          <Eyebrow>Bakom kulisserna</Eyebrow>
-
-          <h2>Teknikerna i projekten</h2>
-
-          <p>
-            En liten statistikövning som räknar hur många projekt som använder
-            olika tekniker.
-          </p>
-
-          <Statistik />
-        </section>
-      )}
-
       <div
         style={{
           display: "flex",
@@ -918,6 +901,7 @@ function ProjectDetail() {
 
 const FORM_ENDPOINT = "https://formspree.io/f/xzeeggbe";
 const MAX_MESSAGE = 500;
+
 
 function Contact() {
   const [name, setName] = useState("");
@@ -974,122 +958,115 @@ function Contact() {
 
   return (
     <main className="interior-page contact-page">
-      <div className="contact-intro">
-        <Eyebrow>Säg hej</Eyebrow>
+      <div className="contact-panel">
 
-        <h1>
-          Har du en idé?
-          <br />
-          <em>Hör av dig.</em>
-        </h1>
+        <div className="contact-intro">
+          <Eyebrow>Kontakt</Eyebrow>
 
-        <p>
-          Jag tycker om nya perspektiv, intressanta frågor och människor som
-          vill skapa något användbart.
-        </p>
+          <h1>Skriv till mig.</h1>
 
-        <p>
-          Fyll i formuläret eller mejla mig direkt på{" "}
-          <a href={`mailto:${EPOST}`}>{EPOST}</a>.
-        </p>
-
-        <div className="contact-decor" aria-hidden="true">
-          <span>
-            Let’s make
-            <br />
-            <em>something work.</em>
-          </span>
+          <p>
+            Du kan använda formuläret nedan eller mejla mig
+            direkt på{" "}
+            <a href={`mailto:${EPOST}`}>{EPOST}</a>.
+          </p>
         </div>
-      </div>
 
-      <div className="contact-card">
-        {sent ? (
-          <div className="contact-success" role="status">
-            <Eyebrow>Meddelandet är skickat</Eyebrow>
+        <div className="contact-card">
+          {sent ? (
+            <div className="contact-success" role="status">
+              <Eyebrow>Meddelandet är skickat</Eyebrow>
 
-            <h2>Tack, {name}!</h2>
+              <h2>Tack, {name}!</h2>
 
-            <p>Jag återkommer så snart jag kan.</p>
+              <p>Jag återkommer så snart jag kan.</p>
 
-            <button
-              className="editorial-button"
-              type="button"
-              onClick={() => {
-                setSent(false);
-                setName("");
-                setEmail("");
-                setMessage("");
-              }}
-            >
-              Skicka ett nytt meddelande
-            </button>
-          </div>
-        ) : (
-          <form onSubmit={submit} noValidate>
-            <Eyebrow>Kontaktformulär</Eyebrow>
+              <button
+                className="editorial-button"
+                type="button"
+                onClick={() => {
+                  setSent(false);
+                  setName("");
+                  setEmail("");
+                  setMessage("");
+                }}
+              >
+                Skicka ett nytt meddelande
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={submit} noValidate>
+              <Eyebrow>Kontaktformulär</Eyebrow>
 
-            <h2>Skriv ett meddelande</h2>
+              <h2>Skriv ett meddelande</h2>
 
-            <label htmlFor="contact-name">
-              Namn
-              <input
-                id="contact-name"
-                autoComplete="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                maxLength={100}
-                required
-                placeholder="Ditt namn"
-              />
-            </label>
+              <label htmlFor="contact-name">
+                Namn
+                <input
+                  id="contact-name"
+                  autoComplete="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  maxLength={100}
+                  required
+                  placeholder="Ditt namn"
+                />
+              </label>
 
-            <label htmlFor="contact-email">
-              E-post
-              <input
-                id="contact-email"
-                type="email"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                maxLength={150}
-                required
-                placeholder="namn@exempel.se"
-              />
-            </label>
+              <label htmlFor="contact-email">
+                E-post
+                <input
+                  id="contact-email"
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  maxLength={150}
+                  required
+                  placeholder="namn@exempel.se"
+                />
+              </label>
 
-            <label htmlFor="contact-message">
-              Meddelande
-              <textarea
-                id="contact-message"
-                rows={6}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                maxLength={MAX_MESSAGE}
-                required
-                placeholder="Vad vill du berätta?"
-              />
-            </label>
+              <label htmlFor="contact-message">
+                Meddelande
+                <textarea
+                  id="contact-message"
+                  rows={6}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  maxLength={MAX_MESSAGE}
+                  required
+                  placeholder="Vad vill du berätta?"
+                />
+              </label>
 
-            <p className="characters-left">
-              {MAX_MESSAGE - message.length} tecken kvar
-            </p>
-
-            {error && (
-              <p className="form-error" role="alert">
-                {error}
+              <p className="characters-left">
+                {MAX_MESSAGE - message.length} tecken kvar
               </p>
-            )}
 
-            <button className="editorial-button" disabled={sending} type="submit">
-              {sending ? "Skickar…" : "Skicka meddelande"}
-              <span aria-hidden="true">↗</span>
-            </button>
-          </form>
-        )}
+              {error && (
+                <p className="form-error" role="alert">
+                  {error}
+                </p>
+              )}
+
+              <button
+                className="editorial-button"
+                disabled={sending}
+                type="submit"
+              >
+                {sending ? "Skickar…" : "Skicka meddelande"}
+                <span aria-hidden="true">↗</span>
+              </button>
+            </form>
+          )}
+        </div>
+
       </div>
     </main>
   );
 }
+
 
 function NotFound() {
   return (

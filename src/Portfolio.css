@@ -173,7 +173,26 @@ img { max-width: 100%; display: block; }
 .footer-links a { color: #f4ede6; font-size: 9px; letter-spacing: .2em; }
 .footer-links a:hover { text-decoration: underline; text-underline-offset: 5px; }
 .footer-socials { display: flex; align-items: center; justify-content: flex-end; gap: 26px; }
-.footer-socials a, .linkedin-placeholder { display: flex; justify-content: center; align-items: center; width: 25px; height: 25px; color: white; }
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  color: #f4ede6;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
 .footer-socials svg { width: 24px; height: 24px; }
 .linkedin-placeholder { font: 800 18px/1 Arial,sans-serif; border: 2px solid currentColor; border-radius: 2px; opacity: .4; cursor: help; }
 
@@ -250,24 +269,147 @@ img { max-width: 100%; display: block; }
 .demo-section .statistik-stapel { background: #d0c8c0; }
 .demo-section .statistik-fyllning { background: #5c6163; }
 
-/* Kontakt */
-.contact-page { display: grid; grid-template-columns: 43% 1fr; gap: 7%; padding-top: 92px; padding-bottom: 105px; min-height: 740px; }
-.contact-intro .eyebrow { margin-bottom: 35px; }
-.contact-intro h1 { margin-bottom: 38px; }
-.contact-intro p { max-width: 365px; font-size: 15px; line-height: 1.75; margin-bottom: 16px; }
-.contact-intro a { text-decoration-thickness: 1px; text-underline-offset: 4px; word-break: break-word; }
-.contact-decor { border-top: 1px solid #bdb4ab; margin-top: 64px; padding-top: 28px; font: 400 38px/1 var(--display); color: #77716a; }
-.contact-card { background: #e9e3db; padding: 38px; box-shadow: 0 13px 32px rgba(0,0,0,.04); }
-.contact-card h2 { font: 400 38px/1 var(--display); margin-bottom: 30px; }
-.contact-card form { display: flex; flex-direction: column; }
-.contact-card .eyebrow { margin-bottom: 15px; }
-.contact-card label { display: flex; flex-direction: column; gap: 9px; font-size: 12px; font-weight: 700; margin-bottom: 22px; }
-.contact-card input, .contact-card textarea { width: 100%; border-radius: 0; padding: 14px 16px; background: #faf8f4; border: 1px solid #c6bdb4; color: #292a2b; font-size: 14px; font-weight: 400; resize: vertical; }
-.contact-card input::placeholder, .contact-card textarea::placeholder { color: #817d7a; }
-.contact-card .characters-left { color: #77736f; font-size: 12px; text-align: right; margin-top: -10px; margin-bottom: 25px; }
-.contact-card .editorial-button { align-self: flex-start; }
-.contact-card .form-error { color: #8f2828; margin-top: -7px; margin-bottom: 20px; font-size: 13px; }
-.contact-success p { font-size: 16px; line-height: 1.6; margin-bottom: 28px; }
+
+/* ====================================
+   KONTAKT – REDAKTIONELL DESIGN
+   ==================================== */
+
+.contact-page {
+  display: block;
+  background: #f6f1eb;
+  padding: 65px clamp(30px, 6%, 75px) 85px;
+  min-height: 0;
+}
+
+/* Mörk inramning */
+
+.contact-panel {
+  background: #374047;
+  padding: clamp(25px, 4vw, 42px);
+}
+
+/* Enkel introduktion */
+
+.contact-intro {
+  color: #f5f0e9;
+  padding: 5px 0 32px;
+}
+
+.contact-intro .eyebrow {
+  color: #c9d0d2;
+  margin-bottom: 22px;
+}
+
+.contact-intro h1 {
+  font: 400 clamp(42px, 5vw, 58px)/1.05 var(--display);
+  color: #f5f0e9;
+  margin: 0 0 20px;
+  letter-spacing: -.025em;
+}
+
+.contact-intro p {
+  max-width: 580px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #d0d5d7;
+  margin: 0;
+}
+
+.contact-intro a {
+  color: #f5f0e9;
+  text-underline-offset: 4px;
+}
+
+/* Ljust formulärpapper */
+
+.contact-card {
+  background: #f5f0e9;
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid #dcd4ca;
+  box-shadow: 9px 10px 0 rgba(0,0,0,.12);
+}
+
+.contact-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card .eyebrow {
+  margin-bottom: 15px;
+}
+
+.contact-card h2 {
+  font: 400 36px/1.1 var(--display);
+  margin-bottom: 30px;
+}
+
+.contact-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #c6bdb4;
+  border-radius: 0;
+  background: #fffdfa;
+  color: #292a2b;
+  font-size: 14px;
+  font-weight: 400;
+  resize: vertical;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+  color: #817d7a;
+}
+
+.contact-card .characters-left {
+  font-size: 12px;
+  color: #77736f;
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+
+.contact-card .editorial-button {
+  align-self: flex-start;
+}
+
+.contact-card .form-error {
+  color: #8f2828;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.contact-success p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Mobil */
+
+@media (max-width: 650px) {
+  .contact-page {
+    padding: 45px 6% 65px;
+  }
+
+  .contact-panel {
+    padding: 22px;
+  }
+
+  .contact-card {
+    padding: 24px 19px;
+  }
+}
+
 
 /* 404 och äldre övningar */
 .not-found { min-height: 520px; }
@@ -324,7 +466,7 @@ img { max-width: 100%; display: block; }
   .brand-name { font-size: 31px; }
   .brand-subtitle { gap: 11px; font-size: 8px; }
   .brand-subtitle i { width: 17px; }
-  .home-hero { height: 640px; }
+  .home-hero { height: 350px; }
   .hero-backdrop .photo-placeholder { padding: 0 15%; padding-top: 60%; }
   .home-headline-card { width: 88%; left: 6%; top: 30px; padding: 30px 26px; }
   .home-headline-card .eyebrow { margin-bottom: 18px; }
@@ -1469,7 +1611,8 @@ body {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #f6f1eb;
-  border: 1px solid #d0c9c1;
+  border: 4px solid #e7e0d9;
+outline: 1px solid #c4bdb6;
 
   box-shadow:
     0 3px 8px rgba(35, 40, 43, .08),
@@ -1555,5 +1698,237 @@ body {
 
   .home-personal .featured-more {
     margin-top: 30px;
+  }
+}
+/* Kortare dekorativ avslutning */
+.home-personal .closing-statement {
+  min-height: 190px;
+  padding: 0;
+}
+
+
+/* ==========================================
+   OM MIG – PERSONLIGT REDAKTIONELLT UPPSLAG
+   ========================================== */
+
+.about-editorial {
+  background: linear-gradient(
+    155deg,
+    #f6f1eb 0%,
+    #eee7e0 65%,
+    #f6f1eb 100%
+  );
+  padding-top: 76px;
+  padding-bottom: 85px;
+}
+
+/* Stor inledande rubrik */
+
+.about-editorial-hero {
+  padding-bottom: 46px;
+  border-bottom: 1px solid #c5bcb3;
+}
+
+.about-editorial-hero .eyebrow {
+  margin-bottom: 28px;
+}
+
+.about-editorial-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(49px, 6.5vw, 82px);
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -.035em;
+  margin: 0 0 30px;
+  color: #292b2c;
+}
+
+.about-editorial-hero h1 em {
+  font-weight: 400;
+}
+
+.about-editorial-lead {
+  max-width: 590px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #4c5154;
+  margin: 0;
+}
+
+/* Asymmetriskt textuppslag */
+
+.about-editorial-story {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: clamp(35px, 6vw, 75px);
+  padding: 48px 0 55px;
+}
+
+/* Vänstra typografiska detaljen */
+
+.about-editorial-side {
+  border: none;
+  padding: 0;
+}
+
+.about-small-portrait {
+  display: block;
+  width: 170px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 35%;
+  border: 1px solid #c5bdb5;
+  box-shadow: 0 8px 20px rgba(25, 30, 35, 0.13);
+}
+
+.about-side-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: #6b7378;
+  margin-bottom: 36px;
+}
+
+.about-editorial-side p {
+  font-family: var(--display);
+  font-size: clamp(38px, 4.2vw, 59px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  color: #3f484f;
+  max-width: 330px;
+  margin-bottom: 37px;
+}
+
+.about-editorial-side em {
+  color: #777e82;
+}
+
+.about-side-line {
+  display: block;
+  width: 95px;
+  height: 1px;
+  background: #9b9d9d;
+}
+
+/* Personlig text till höger */
+
+.about-editorial-copy {
+  padding-top: 3px;
+}
+
+.about-editorial-copy h2 {
+  font-family: var(--display);
+  font-size: clamp(37px, 4vw, 51px);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0 0 28px;
+  color: #292b2c;
+}
+
+.about-editorial-copy p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #42464a;
+  margin: 0 0 22px;
+  max-width: 510px;
+}
+
+/* Avslutning med verktyg och kontakt */
+
+.about-editorial-bottom {
+  border-top: 1px solid #c5bcb3;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+}
+
+.about-editorial-tools .eyebrow {
+  margin-bottom: 16px;
+}
+
+.about-editorial-tools p {
+  font-size: 13px;
+  color: #4b5257;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.about-editorial-tools p span {
+  color: #9a9d9f;
+  padding: 0 5px;
+}
+
+.about-editorial-bottom .subtle-link {
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+/* Mindre skärmar */
+
+@media (max-width: 800px) {
+  .about-editorial-story {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .about-editorial-side {
+    padding-left: 0px;
+  }
+
+  .about-editorial-side p {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-editorial {
+    padding-top: 52px;
+    padding-bottom: 65px;
+  }
+
+  .about-editorial-hero h1 {
+    font-size: clamp(44px, 10vw, 60px);
+  }
+
+  .about-editorial-story {
+    padding: 42px 0 50px;
+  }
+
+  .about-editorial-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+}
+/* Projektsidan – mindre rubrik */
+
+.projects-page .project-page-heading h1 {
+  font-size: clamp(38px, 4vw, 54px);
+  line-height: 1.1;
+}
+/* Statistik på projektsidan */
+
+.projects-statistics {
+  margin-top: 60px;
+}
+
+.projects-statistics .statistik {
+  margin-top: 25px;
+}
+
+.projects-statistics .statistik-lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 30px;
+}
+
+@media (max-width: 680px) {
+  .projects-statistics .statistik-lista {
+    grid-template-columns: 1fr;
   }
 }
